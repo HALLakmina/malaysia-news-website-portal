@@ -1,0 +1,4 @@
+/* Navigation Component */
+.nav-item-hover:hover{
+    background-color: var(--color-ash-gray);
+}

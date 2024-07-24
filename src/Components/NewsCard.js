@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NewsCard = () => {
   return (
-    <div className="rounded-lg p-3 color-bg-white flex flex-col relative" style={{width:'380px'}}>
-        <div className="absolute top-0 right-0">Latest</div>
+    <div className="rounded-lg p-3 color-bg-white flex flex-col relative m-2" style={{width:'380px'}}>
+        <p className="absolute top-0 right-0 body-font-5">Latest</p>
         <div style={{width:'100%',height:'200px'}}>
             <img src="" alt="" className="size-full rounded-lg"/>
         </div>
@@ -16,7 +17,7 @@ const NewsCard = () => {
             Theatre today Pix by Waruna Wanniarachchi
         </p>
         <div className='flex flex-row items-center justify-center my-5' style={{width:'100%'}}>
-            <button className="body-font-5 font-bold" aria-label="Read More Button" type="button">READ MORE</button>
+            <Link to="/read-more-news"className="body-font-5 font-bold" aria-label="Read More Button" type="button">READ MORE</Link>
         </div>
     </div>
   )
