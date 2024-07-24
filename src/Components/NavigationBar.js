@@ -24,15 +24,15 @@ const NavigationBar = () => {
                         <Link to="/"  className='body-font-5 font-bold flex items-center md:justify-center my-4 md:my-0'>NEWS <img src='/assets/icons/dropdown-icon.svg' alt='' className='ms-2 h-2'/></Link>
                         <div className='absolute top-6 left-0 right-0 h-10'></div>
                         <ul className= {`p-2 mx-2 mt-3 w-64 color-bg-white rounded md:absolute ${isNewsHover ? "block":'hidden'}`}>
-                            <li className="my-2"><Link to="/" className='body-font-5 font-bold'>Sri Lankan News</Link></li>
-                            <li className="my-2"><Link to="/" className='body-font-5 font-bold'>Malaysian News</Link></li>
-                            <li className="my-2"><Link to="/" className='body-font-5 font-bold'>GOSSIP News</Link></li>
-                            <li className="my-2"><Link to="/" className='body-font-5 font-bold'>SPORT News</Link></li>
-                            <li className="my-2"><Link to="/" className='body-font-5 font-bold'>WORLD NEWS</Link></li>
+                            <li className="my-2"><Link to="/sri-lankan-news" className='body-font-5 font-bold'>Sri Lankan News</Link></li>
+                            <li className="my-2"><Link to="/malaysian-news" className='body-font-5 font-bold'>Malaysian News</Link></li>
+                            <li className="my-2"><Link to="/gossip" className='body-font-5 font-bold'>GOSSIP</Link></li>
+                            <li className="my-2"><Link to="/sport" className='body-font-5 font-bold'>SPORT News</Link></li>
+                            <li className="my-2"><Link to="/world-news" className='body-font-5 font-bold'>WORLD NEWS</Link></li>
                         </ul>
                         </li>
-                    <li className="px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/" className='body-font-5 font-bold'>ABOUT US</Link></li>
-                    <li className="px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/" className='body-font-5 font-bold'>CONTACT US</Link></li>
+                    <li className="px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/about-us" className='body-font-5 font-bold'>ABOUT US</Link></li>
+                    <li className="px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/contact-us" className='body-font-5 font-bold'>CONTACT US</Link></li>
                 </ul>
                 <form className="flex flex-row basis-9/12 md:basis-4/12 justify-end w-full px-5 md:px-0">
                     <input type="text" placeholder="SEARCH" className='px-2 py-1 body-font-5 rounded-l-lg w-full'/>
