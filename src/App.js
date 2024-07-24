@@ -8,6 +8,14 @@ const App = () =>{
       <div className="main-component-body">
         <Routes>
           <Route  path="/" element={<Index/>}/>
+          <Route  path="/sri-lankan-news" element={''}/>
+          <Route  path="/malaysian-news" element={''}/>
+          <Route  path="/gossip" element={''}/>
+          <Route  path="/sport" element={''}/>
+          <Route  path="/world-news" element={''}/>
+          <Route  path="/about-us" element={''}/>
+          <Route  path="/contact-us" element={''}/>
+          <Route  path="/read-more-news/:id?" element={''}/>
         </Routes>
       </div>
     </div>
