@@ -1,0 +1,89 @@
+:root{
+    --color-page-bg: #dee8f4;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-ash-gray: #B2BEB5;
+
+    --component-max-with: 1200px;
+    --component-min-with: 320px;
+    --main-font-family: "helvetica";
+    
+}
+
+/* ----------HEADING FONT---------- */
+.heading-font-1{
+    font-size:155.18;
+    font-weight: bold;
+}
+.heading-font-2{
+    font-size:95.91px;
+    font-weight: bold;
+}
+.heading-font-3{
+    font-size:59.28px;
+    font-weight: bold;
+}
+.heading-font-4{
+    font-size:36.64px;
+    font-weight: bold;
+}
+.heading-font-5{
+    font-size:22.65px;
+    font-weight: bold;
+}
+
+/* ----------BODY FONT---------- */
+.body-font-1{
+    font-size:95.91px;
+}
+.body-font-2{
+    font-size:59.28px;
+}
+.body-font-3{
+    font-size:36.64px;
+}
+.body-font-4{
+    font-size:22.65px;
+}
+.body-font-5{
+    font-size:14px;
+}
+
+/* ----------BACKGROUND COLOR---------- */
+.color-main-bg {
+    background-color: var(--color-page-bg)
+}
+.color-bg-white{
+    background-color:var(--color-white)
+}
+.color-bg-black{
+    background-color:var(--color-black)
+}
+.color-bg-ash-gray{
+    background-color:var(--color-ash-gray)
+}
+
+/* ----------TEXT COLOR---------- */
+.color-text-on-white{
+    color:var(--color-white);
+}
+.color-text-on-primary{
+    color:var(--color-primary);
+}
+.color-text-on-ash-gray{
+    color:var(--color-ash-gray)
+}
+
+/* ----------COMPONENT WRAPPING---------- */
+.main-component-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.main-component-body{
+    max-width: var(--component-max-with);
+    min-width: var(--component-min-with);
+    width: 100%;
+}
