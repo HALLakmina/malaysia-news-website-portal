@@ -2,3 +2,45 @@
 .nav-item-hover:hover{
     background-color: var(--color-ash-gray);
 }
+/* Slid Show */
+.slid-show-container-wrapper{
+    position: relative;
+    width:100%;
+    max-width: 1200px;
+    max-height: 800px;
+    height: 70vw;
+    overflow-x: hidden;
+}
+.slid-show-image-container{
+    display:flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: slide 16s infinite;
+}
+.slid-show-images{
+    width: 1200px;
+    width: 100%;
+    object-fit: cover;
+}
+@keyframes slide {
+    0% {
+        transform: translateX(0)
+    }
+    12.5%{
+        transform: translateX(0)
+    }
+    25%{
+        transform: translateX(-100%)
+    }
+    75%{
+        transform: translateX(-100%)
+    }
+    87.5%{
+        transform: translateX(-200%)
+    }
+    100%{
+        transform: translateX(-200%)
+    }
+}

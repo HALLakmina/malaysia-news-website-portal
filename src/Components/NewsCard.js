@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const NewsCard = () => {
   return (
-    <div className="rounded-lg p-3 color-bg-white flex flex-col relative m-2" style={{width:'380px'}}>
+    <div className="rounded-lg p-3 color-bg-white flex flex-col relative my-2" style={{width:'380px'}}>
         <p className="absolute top-0 right-0 body-font-5">Latest</p>
         <div style={{width:'100%',height:'200px'}}>
             <img src="" alt="" className="size-full rounded-lg"/>
