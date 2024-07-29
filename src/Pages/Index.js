@@ -1,13 +1,9 @@
 import React from 'react'
-
+import SlidShow from '../Components/SlidShow'
 const Index = () => {
   return (
     <>
-        <main className='py-5'>
-            <h1 className="text-3xl font-bold underline">
-                Home
-            </h1>
-        </main>
+      <SlidShow/>
     </>
   )
 }

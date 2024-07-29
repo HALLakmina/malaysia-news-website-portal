@@ -86,4 +86,8 @@
     max-width: var(--component-max-with);
     min-width: var(--component-min-with);
     width: 100%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
 }
