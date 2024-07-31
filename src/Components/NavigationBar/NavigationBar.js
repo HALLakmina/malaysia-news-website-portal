@@ -21,15 +21,15 @@ const NavigationBar = () => {
                     <p className="font-bold m-3  text-base rounded-full border-2 border-red-500 text-red-500 w-8 h-8 flex items-center justify-center md:hidden"onClick={()=>handleSideMenu(false)}>X</p>
                     <li className="mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/" className='nav-item-hover px-2 rounded-full body-font-5 font-bold'>HOME</Link></li>
                     <li className=" mx-2 color-bg-white rounded-full relative " onMouseEnter={()=>setIsNewsHover(true)} onMouseLeave={()=>setIsNewsHover(false)}>
-                        <Link to="/"  className='nav-item-hover px-2 rounded-full body-font-5 font-bold flex items-center md:justify-center my-4 md:my-0'>NEWS <img src='/assets/icons/dropdown-icon.svg' alt='' className='ms-2 h-2'/></Link>
-                        <div className='absolute top-6 left-0 right-0 h-3'></div>
-                        <ul className= {`p-2 mx-2 mt-3 w-64 color-bg-white rounded md:absolute z-20 ${isNewsHover ? "block":'hidden'}`}>
-                            <li className="my-2 px-2 nav-item-hover"><Link to="/sri-lankan-news" className='body-font-5 font-bold'>Sri Lankan News</Link></li>
-                            <li className="my-2 px-2 nav-item-hover"><Link to="/malaysian-news" className='body-font-5 font-bold'>Malaysian News</Link></li>
-                            <li className="my-2 px-2 nav-item-hover"><Link to="/gossip" className='body-font-5 font-bold'>GOSSIP</Link></li>
-                            <li className="my-2 px-2 nav-item-hover"><Link to="/sport" className='body-font-5 font-bold'>SPORT News</Link></li>
-                            <li className="my-2 px-2 nav-item-hover"><Link to="/world-news" className='body-font-5 font-bold'>WORLD NEWS</Link></li>
-                        </ul>
+                        <p  className='nav-item-hover px-2 rounded-full body-font-5 font-bold flex items-center md:justify-center my-4 md:my-0'>NEWS <img src='/assets/icons/dropdown-icon.svg' alt='' className='ms-2 h-2'/></p>
+                            <div className='absolute top-6 left-0 right-0 h-3'></div>
+                            <ul className= {`p-2 mx-2 mt-3 w-64 color-bg-white rounded md:absolute z-20 ${isNewsHover ? "block":'hidden'}`}>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sriLanka" className='body-font-5 font-bold'>SRI LANKAN NEWS</Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/malaysian" className='body-font-5 font-bold'>MALAYSIAN NEWS</Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/gossip" className='body-font-5 font-bold'>GOSSIP</Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sport" className='body-font-5 font-bold'>SPORT News</Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/world" className='body-font-5 font-bold'>WORLD NEWS</Link></li>
+                            </ul>
                         </li>
                     <li className="nav-item-hover px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/about-us" className='body-font-5 font-bold'>ABOUT US</Link></li>
                     <li className="nav-item-hover px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/contact-us" className='body-font-5 font-bold'>CONTACT US</Link></li>

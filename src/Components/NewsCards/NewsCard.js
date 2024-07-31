@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NewsCard = ({style}) => {
+const NewsCard = ({ type, data}) => {
   return (
       <div className="rounded-lg p-3 color-bg-white flex flex-col relative my-2 mx-2 ">
           <p className="absolute top-0 right-0 body-font-5">Latest</p>
@@ -17,7 +17,7 @@ const NewsCard = ({style}) => {
               Theatre today Pix by Waruna Wanniarachchi
           </p>
           <div className='flex flex-row items-center justify-center my-5' style={{width:'100%'}}>
-              <Link to="/read-more-news"className="body-font-5 font-bold" aria-label="Read More Button" type="button">READ MORE</Link>
+              <Link to={`/news/${type}/${data}`}className="body-font-5 font-bold" aria-label="Read More Button" type="button">READ MORE</Link>
           </div>
         </div>
   )

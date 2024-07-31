@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import NavigationBar from './Components/NavigationBar/NavigationBar'
 import Index from "./Pages/Index"
+import NewsPage from "./Pages/NewsPage";
+import NewsReadPage from "./Pages/NewsReadPage";
 
 const App = () =>{
   return (
@@ -10,14 +12,10 @@ const App = () =>{
         <NavigationBar/>
         <Routes>
           <Route  path="/" element={<Index/>}/>
-          <Route  path="/sri-lankan-news" element={''}/>
-          <Route  path="/malaysian-news" element={''}/>
-          <Route  path="/gossip" element={''}/>
-          <Route  path="/sport" element={''}/>
-          <Route  path="/world-news" element={''}/>
+          <Route  path="/news/:type" element={<NewsPage/>}/>
+          <Route  path="/news/:type/:id" element={<NewsReadPage/>}/>
           <Route  path="/about-us" element={''}/>
           <Route  path="/contact-us" element={''}/>
-          <Route  path="/read-more-news/:id?" element={''}/>
         </Routes>
       </div>
     </div>
