@@ -44,3 +44,37 @@
         transform: translateX(-200%)
     }
 }
+
+/* Admin Panel Table */
+@media (max-width: 640px){
+    .table-data-header{
+        position: relative;
+        padding-left:45%;
+        text-align:left;
+        width:100%;
+    }
+
+    .table-data-header::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width:40%;
+        padding-left:10px;
+        margin-right: 10xp;
+        text-align:left;
+        font-weight: 800;
+    }
+    tr{
+        position: relative;
+        width:100%
+    }
+    tr::before{
+        content:'';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width:40%;
+        background-color: rgb(55 65 81 );
+    }
+}
