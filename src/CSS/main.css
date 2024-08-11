@@ -91,3 +91,14 @@
     align-items: center;
     justify-content: center;
 }
+.component-responsive-size{
+    max-width: var(--component-max-with);
+    min-width: var(--component-min-with);
+    width: 100%;
+}
+
+@media only screen and (max-width: 1200px){
+    .component-responsive-size{
+        width: 100vw;
+    }
+}
