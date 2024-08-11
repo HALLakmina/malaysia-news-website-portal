@@ -1,11 +1,14 @@
-import { apiClient } from "./ApiService";
+import { adminToken } from "../Util/adminToken";
+import { serverApiUrl } from "./ApiService";
 
-const ADMIN_JWT_TOKEN =''
+// const ADMIN_JWT_TOKEN = adminToken()
 
 export const uploadNewsImageFiles = async (payload) => {
-    return await apiClient.post(`/api/v1/files/upload`,payload, {headers:{"admin-access-token":ADMIN_JWT_TOKEN,'Content-Type': 'multipart/form-data'}});
+    const ADMIN_JWT_TOKEN = await adminToken()
+    return await serverApiUrl.post(`/api/v1/file/image-upload`,payload, {headers:{"admin-access-token":ADMIN_JWT_TOKEN,'Content-Type': 'multipart/form-data'}});
 }
 
 export const deleteNewsImageFiles = async (payload) => {
-    return await apiClient.post(`/api/v1/files/upload`,payload, {headers:{"admin-access-token":ADMIN_JWT_TOKEN,'Content-Type': 'multipart/form-data'}});
+    const ADMIN_JWT_TOKEN = await adminToken()
+    return await serverApiUrl.post(`/api/v1/files/upload`,payload, {headers:{"admin-access-token":ADMIN_JWT_TOKEN,'Content-Type': 'multipart/form-data'}});
 }

@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { AppContext } from '../../ContextAPI/AppContext'
 
 const LeftSideNavigationBar = () => {
     
+    const {dataDispatchEvent} = useContext(AppContext)
+
     const [isSideMenuTrigger, setIsSideMenuTrigger] = useState(false)
 
+    const navigate = useNavigate()
     const { pathname } = useLocation()
-
     const panelName = pathname.split('/',3)[2]
 
     useEffect(() => {
@@ -15,6 +18,10 @@ const LeftSideNavigationBar = () => {
 
     const handleSideMenu = (state) =>{
         setIsSideMenuTrigger(state)
+    }
+    const SignOutHandler = () =>{
+        dataDispatchEvent('REMOVE_SIGN_IN_ADMIN_IN_COOKIES')
+        navigate('/')
     }
     return (
         <header className={`absolute z-10 left-0 top-0 bottom-0 ${isSideMenuTrigger ? "bg-blue-600":''}`}>
@@ -34,11 +41,14 @@ const LeftSideNavigationBar = () => {
                             <p>LOGO_</p>
                             <h3>HEADING</h3>
                         </div>
-                        <ul>
-                            <li className="my-2 px-2 nav-item-hover"><Link to="/admin-panel"><p  className='body-font-5 font-bold w-full'>HOME</p></Link></li>
-                            <li className="my-2 px-2 nav-item-hover w-full"><Link to="/admin-panel/news"><p  className='body-font-5 font-bold w-full'>NEWS</p></Link></li>
-                            {/* <li className="my-2 px-2 nav-item-hover"><Link to="/admin-panel/admin" className='body-font-5 font-bold'>ADMIN</Link></li> */}
-                        </ul>
+                        <div className="flex flex-col items-start justify-between h-full">
+                            <ul>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/admin-panel"><p  className='body-font-5 font-bold w-full'>HOME</p></Link></li>
+                                <li className="my-2 px-2 nav-item-hover w-full"><Link to="/admin-panel/news"><p  className='body-font-5 font-bold w-full'>NEWS</p></Link></li>
+                                {/* <li className="my-2 px-2 nav-item-hover"><Link to="/admin-panel/admin" className='body-font-5 font-bold'>ADMIN</Link></li> */}
+                            </ul>
+                            <button type="button" onClick={()=>SignOutHandler()} className='my-2 px-2 nav-item-hover body-font-5 font-bold w-full' >Sign Out</button>    
+                        </div>
                     </>
                 :''}
             </nav>

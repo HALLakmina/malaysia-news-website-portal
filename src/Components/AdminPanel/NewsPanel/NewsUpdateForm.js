@@ -1,9 +1,13 @@
 import React from 'react'
 
-const NewsUpdateForm = () => {
+const NewsUpdateForm = ({close}) => {
+    const goBackTOManage = ()=>{
+        close(false)
+    }
     return (
         <div className="w-full flex flex-col items-center justify-center p-5">
             <h1 className="text-center my-8 text-3xl sm:text-4xl font-bold">Update NEWS</h1>
+            <button type="button" onClick={()=>goBackTOManage()}className="self-start text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{"< GO BACK"}</button>
             <form className="flex flex-col justify-start w-full">
                 <div className="w-full flex flex-col my-5">
                     <label className="block"><span className="block sm:text-sm text-md font-bold text-slate-700">TOPIC</span></label>
