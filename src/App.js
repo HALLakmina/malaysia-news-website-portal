@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NavigationBar from './Components/NavigationBar/NavigationBar'
+import LeftSideNavigationBar from "./Components/NavigationBar/LeftSideNavigationBar";
 import Index from "./Pages/Index"
 import NewsPage from "./Pages/NewsPage";
 import NewsReadPage from "./Pages/NewsReadPage";
 import AboutUs from "./Pages/AboutUs";
 import AdminPanelPage from "./Pages/AdminPanelPage";
-import LeftSideNavigationBar from "./Components/NavigationBar/LeftSideNavigationBar";
+import AdminSignInPage from './Pages/AdminSignInPage'
 
 const App = () =>{
   const { pathname } = useLocation()
@@ -14,8 +15,15 @@ const App = () =>{
   return (
     <div className="main-component-wrapper color-main-bg relative">
       <div className="main-component-body">
-        {mainPageName[1] !== 'admin-panel' ?<NavigationBar/>: <LeftSideNavigationBar/>}
-        <div className="min-h-screen component-responsive-size">
+        <div className="min-h-screen w-full">
+        {(mainPageName[1] !== 'admin-login')?  
+          mainPageName[1] !== 'admin-panel' ?
+            <NavigationBar/>
+          : 
+            <LeftSideNavigationBar/>
+        :
+          ''}
+        <div className=" component-responsive-size">
           <Routes>
             <Route  path="/" element={<Index/>}/>
             <Route  path="/news/:type" element={<NewsPage/>}/>
@@ -23,7 +31,9 @@ const App = () =>{
             <Route  path="/about-us" element={<AboutUs/>}/>
             <Route  path="/contact-us" element={''}/>
             <Route  path="/admin-panel/:pageName?" element={<AdminPanelPage/>}/>
+            <Route  path="/admin-login" element={<AdminSignInPage/>}/>
           </Routes>
+        </div>
         </div>
       </div>
     </div>
