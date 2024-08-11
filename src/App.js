@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NavigationBar from './Components/NavigationBar/NavigationBar'
+import LeftSideNavigationBar from "./Components/NavigationBar/LeftSideNavigationBar";
 import Index from "./Pages/Index"
 import NewsPage from "./Pages/NewsPage";
 import NewsReadPage from "./Pages/NewsReadPage";
 import AboutUs from "./Pages/AboutUs";
 import AdminPanelPage from "./Pages/AdminPanelPage";
-import LeftSideNavigationBar from "./Components/NavigationBar/LeftSideNavigationBar";
-import AdminSignIn from './Components/SignIn/AdminSignIn'
+import AdminSignInPage from './Pages/AdminSignInPage'
 
 const App = () =>{
   const { pathname } = useLocation()
@@ -31,7 +31,7 @@ const App = () =>{
             <Route  path="/about-us" element={<AboutUs/>}/>
             <Route  path="/contact-us" element={''}/>
             <Route  path="/admin-panel/:pageName?" element={<AdminPanelPage/>}/>
-            <Route  path="/admin-login" element={<AdminSignIn/>}/>
+            <Route  path="/admin-login" element={<AdminSignInPage/>}/>
           </Routes>
         </div>
         </div>
