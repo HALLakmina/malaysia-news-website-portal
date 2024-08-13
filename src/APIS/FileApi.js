@@ -10,5 +10,5 @@ export const uploadNewsImageFiles = async (payload) => {
 
 export const deleteNewsImageFiles = async (payload) => {
     const ADMIN_JWT_TOKEN = await adminToken()
-    return await serverApiUrl.post(`/api/v1/files/upload`,payload, {headers:{"admin-access-token":ADMIN_JWT_TOKEN,'Content-Type': 'multipart/form-data'}});
+    return await serverApiUrl.patch(`/api/v1/file/image-delete`,payload,{headers:{"admin-access-token":ADMIN_JWT_TOKEN,'Content-Type': 'multipart/form-data'}});
 }

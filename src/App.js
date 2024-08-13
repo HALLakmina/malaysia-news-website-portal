@@ -11,15 +11,21 @@ import AdminPanelPage from "./Pages/AdminPanelPage";
 import AdminSignInPage from './Pages/AdminSignInPage'
 import { AppContext } from "./ContextAPI/AppContext";
 import Cookies from "universal-cookie";
+import { getNewsCount, getNewsForAdmin } from "./APIS/NewsApi";
+
+
+const responseMessages = require('./Util/responseMessages')
 
 const App = () =>{
   const [adminSignIn, getAdminSignIn] =useState('')
-
+  const [adminNews, setAdminNews] = useState([])
+  const [adminNewsCount, setAdminNewsCount] = useState(0)
   const { pathname } = useLocation()
   const mainPageName = pathname.split('/',2)
 
   useEffect(()=>{
     dataDispatchEvent('GET_SIGN_IN_ADMIN_FROM_COOKIES')
+    dataDispatchEvent('GET_NEWS_FOR_ADMIN')
   },[])
 
   const setSignInUserToCookies = async (jwtToken)=>{
@@ -37,7 +43,63 @@ const App = () =>{
       await cookies.remove('JWT_TOKEN')
       getAdminSignIn(undefined)
   }
+  const newsForAdmin = async (payload)=>{
+    try{
+      const respond = await getNewsForAdmin(payload?.page, payload?.limit, payload?.sortOrder, payload?.category, payload?.language, payload?.search)
+      if(Array.isArray(respond.data)){
+        setAdminNews(respond.data)
+      }
+    }
+    catch(error){
+      let takeMessage = error?.message
+      const response = error?.response
+      console.log(error)
+      if(response){
+        const {status, data} = response
+        const message = data?.message
+        if(response && status === 400){
+          const message = data[0]?.message
+          takeMessage = message || responseMessages.error[400]
+        }
+        else if(response && status === 409){
+          takeMessage = message || responseMessages.error[409](responseMessages.type.news)
+        }
+        else if(response && status === 500){
+          takeMessage = message || responseMessages.error[500]
+        }
+      }
+      console.log(takeMessage);
+    }
+  }
+  const newsForUser = async (payload) => {
 
+  }
+  const newsCountForAdmin= async ()=>{
+    try{
+      const respond = await getNewsCount()
+      setAdminNewsCount(respond.data)
+    }
+    catch(error) {
+      let takeMessage = error?.message
+      const response = error?.response
+      console.log(error)
+      if(response){
+        const {status, data} = response
+        const message = data?.message
+        if(response && status === 400){
+          const message = data[0]?.message
+          takeMessage = message || responseMessages.error[400]
+        }
+        else if(response && status === 404){
+          takeMessage = message || responseMessages.error[404](responseMessages.type.news)
+        }
+        else if(response && status === 500){
+          takeMessage = message || responseMessages.error[500]
+        }
+      }
+      console.log(takeMessage);
+    }
+  }
   const dataDispatchEvent = (action, payload) => {
     switch(action){
       case 'SET_SIGN_IN_ADMIN_TO_COOKIES':
@@ -49,12 +111,19 @@ const App = () =>{
       case 'REMOVE_SIGN_IN_ADMIN_IN_COOKIES':
         removeSignInUserFromCookies(payload)
           break;
+      case 'GET_NEWS_FOR_ADMIN':
+        newsForAdmin(payload)
+        newsCountForAdmin()
+          break;
+      case 'GET_NEWS_FOR_USER':
+        newsForUser(payload)
+          break;
       default:
           return
     }
   }
   return (
-    <AppContext.Provider value={ {dataDispatchEvent, adminSignIn} }>
+    <AppContext.Provider value={ {dataDispatchEvent, adminSignIn, adminNews, adminNewsCount} }>
       <div className="main-component-wrapper color-main-bg relative">
         <div className="main-component-body">
           <div className="min-h-screen w-full">

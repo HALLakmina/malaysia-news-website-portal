@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { createNews } from '../../../APIS/NewsApi'
 import { uploadNewsImageFiles } from '../../../APIS/FileApi'
+import { AppContext } from '../../../ContextAPI/AppContext'
+
 const responseMessages = require('../../../Util/responseMessages')
 
 const NewsAddForm = ({close}) => {
-    const newsDataObj = {topic:'', description:'', category:'', language:'', image:'', date:'', time:'', video_link:''}
+    const newsDataObj = {topic:'', description:'', category:'', language:'', image:'', video_link:''}
     const [newNewsData, setNewNewsData] = useState(newsDataObj)
     const [apiState, setApiState] = useState({success:false, error:false, message:undefined})
+
+    const {dataDispatchEvent} = useContext(AppContext)
 
     const goBackTOManage = ()=>{
         resetApiState()
@@ -30,6 +34,7 @@ const NewsAddForm = ({close}) => {
             const {message} = response.data
             setApiState({...apiState, success:true,  message:message || responseMessages.common.add(responseMessages.type.news)})
             setTimeout(()=>{
+                dataDispatchEvent('GET_NEWS_FOR_ADMIN')
                 goBackTOManage()
             },1000)
         }
@@ -152,35 +157,9 @@ const NewsAddForm = ({close}) => {
                 <input 
                     type="file" 
                     name="image" 
-                    required 
+                    required = {newNewsData.image === '' ? true : false}
                     accept="image/png, image/jpeg, image/apng, image/bmp, image/gif, image/jpg, image/pjpeg, image/png, image/svg+xml, image/tiff, image/webp, image/x-icon"
                     onChange={(e)=>inputImageHandler(e)}
-                    className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500 sm:max-w-xs"/>
-            </div>
-            <div className="sm:max-w-xs w-full flex flex-col my-5">
-                <label className="block"><span className="block sm:text-sm text-md font-bold text-slate-700">Date</span></label>
-                <input 
-                    type="date" 
-                    name="date"
-                value={newNewsData.date||""}
-                    onChange={(e)=>inputValueHandler(e)}
-                    className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500 sm:max-w-xs"/>
-            </div>
-            <div className="sm:max-w-xs w-full flex flex-col my-5">
-                <label className="block"><span className="block sm:text-sm text-md font-bold text-slate-700">Time</span></label>
-                <input 
-                    type="time" 
-                    name="time" 
-                    value={newNewsData.time || ''}
-                    onChange={(e)=>inputValueHandler(e)}
                     className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
       disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none

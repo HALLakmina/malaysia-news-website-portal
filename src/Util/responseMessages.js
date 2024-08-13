@@ -1,6 +1,7 @@
 const common = {
     add: (resource) => `A New ${resource} Added Successfully`,
     updated: (resource) => `${resource} Updated Successfully`,
+    active: (resource) => `${resource} Active Successfully`,
     disable: (resource) => `${resource} Disable Successfully`,
     deleted: (resource) => `${resource} Deleted Successfully`,
 }
