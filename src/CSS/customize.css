@@ -64,11 +64,11 @@
         text-align:left;
         font-weight: 800;
     }
-    tr{
+    .customize-tr{
         position: relative;
         width:100%
     }
-    tr::before{
+    .customize-tr::before{
         content:'';
         position: absolute;
         left: 0;

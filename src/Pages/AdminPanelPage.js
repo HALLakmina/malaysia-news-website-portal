@@ -1,12 +1,27 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import NewsPanel from '../Components/AdminPanel/NewsPanel'
 import AdminPanelHome from '../Components/AdminPanel/AdminPanelHome'
+import { AppContext } from '../ContextAPI/AppContext'
 
 const AdminPanelPage = () => {
     
+  const {adminSignIn, dataDispatchEvent} = useContext(AppContext)
+
     const { pathname } = useLocation()
     const panelName = pathname.split('/',3)[2]
+    const navigate = useNavigate()
+  
+  useEffect(() => {
+    dataDispatchEvent('GET_NEWS_FOR_ADMIN')
+  },[])  
+  useEffect(()=>{
+      if(adminSignIn === undefined){
+        navigate('/')
+      }
+  },[adminSignIn])
+
   return (
     <div className='sm:mx-5 mx-1 mt-10'>
         { panelName ? 
