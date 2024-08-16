@@ -23,7 +23,6 @@ const AdminSignIn = () => {
         resetApiState()
         try{
             const respond = await signInAdmin(adminData)
-            console.log(respond.data)
             dataDispatchEvent('SET_SIGN_IN_ADMIN_TO_COOKIES', respond.data)
             setApiState({...apiState, success:true,  message:responseMessages.admin.found})
             setTimeout(()=>{

@@ -7,12 +7,15 @@ import { AppContext } from '../ContextAPI/AppContext'
 
 const AdminPanelPage = () => {
     
-  const {adminSignIn} = useContext(AppContext)
+  const {adminSignIn, dataDispatchEvent} = useContext(AppContext)
 
     const { pathname } = useLocation()
     const panelName = pathname.split('/',3)[2]
     const navigate = useNavigate()
-    
+  
+  useEffect(() => {
+    dataDispatchEvent('GET_NEWS_FOR_ADMIN')
+  },[])  
   useEffect(()=>{
       if(adminSignIn === undefined){
         navigate('/')

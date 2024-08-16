@@ -12,9 +12,14 @@ export const getNewsForAdmin = async (page=1, limit=12, sortOrder='ASC', categor
     return await serverApiUrl.get(`/api/v1/news?page=${page}&limit=${limit}&language=${language}&category=${category}&sortOrder=${sortOrder}&search=${search}`,{headers:{"admin-access-token":ADMIN_JWT_TOKEN}})
 }
 
+export const getNewsById = async (id)=>{
+    return await serverApiUrl.get(`/api/v1/news/${id}`)
+}
+
 export const getNewsForUser = async (page=1, limit=12, sortOrder='ASC', category='', language='', search='')=>{
     return await serverApiUrl.get(`/api/v1/news?page=${page}&limit=${limit}&language=${language}&category=${category}&sortOrder=${sortOrder}&search=${search}`)
 }
+
 export const getNewsCount = async ()=>{
     const ADMIN_JWT_TOKEN = await adminToken()
     return await serverApiUrl.get(`/api/v1/news/news-count`,{headers:{"admin-access-token":ADMIN_JWT_TOKEN}})

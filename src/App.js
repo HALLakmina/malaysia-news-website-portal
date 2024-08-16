@@ -11,7 +11,7 @@ import AdminPanelPage from "./Pages/AdminPanelPage";
 import AdminSignInPage from './Pages/AdminSignInPage'
 import { AppContext } from "./ContextAPI/AppContext";
 import Cookies from "universal-cookie";
-import { getNewsCount, getNewsForAdmin } from "./APIS/NewsApi";
+import { getNewsCount, getNewsForAdmin, getNewsForUser } from "./APIS/NewsApi";
 
 
 const responseMessages = require('./Util/responseMessages')
@@ -19,13 +19,14 @@ const responseMessages = require('./Util/responseMessages')
 const App = () =>{
   const [adminSignIn, getAdminSignIn] =useState('')
   const [adminNews, setAdminNews] = useState([])
+  const [userNews, setUserNews] = useState([])
   const [adminNewsCount, setAdminNewsCount] = useState(0)
   const { pathname } = useLocation()
   const mainPageName = pathname.split('/',2)
 
   useEffect(()=>{
     dataDispatchEvent('GET_SIGN_IN_ADMIN_FROM_COOKIES')
-    dataDispatchEvent('GET_NEWS_FOR_ADMIN')
+    dataDispatchEvent('GET_NEWS_FOR_USER')
   },[])
 
   const setSignInUserToCookies = async (jwtToken)=>{
@@ -53,7 +54,6 @@ const App = () =>{
     catch(error){
       let takeMessage = error?.message
       const response = error?.response
-      console.log(error)
       if(response){
         const {status, data} = response
         const message = data?.message
@@ -68,11 +68,32 @@ const App = () =>{
           takeMessage = message || responseMessages.error[500]
         }
       }
-      console.log(takeMessage);
     }
   }
   const newsForUser = async (payload) => {
-
+    try{
+      const response = await getNewsForUser(payload?.page, payload?.limit, payload?.sortOrder, payload?.category, payload?.language, payload?.search)
+      if(Array.isArray(response.data)){
+        setUserNews(response.data)
+      }
+    }
+    catch(error){
+      let takeMessage = error?.message
+      const response = error?.response
+      console.log(error)
+      const {status, data} = response
+      const message = data?.message
+      if(response && status === 400){
+        const message = data[0]?.message
+        takeMessage = message || responseMessages.error[400]
+      }
+      else if(response && status === 409){
+        takeMessage = message || responseMessages.error[409](responseMessages.type.news)
+      }
+      else if(response && status === 500){
+        takeMessage = message || responseMessages.error[500]
+      }
+    }
   }
   const newsCountForAdmin= async ()=>{
     try{
@@ -82,7 +103,6 @@ const App = () =>{
     catch(error) {
       let takeMessage = error?.message
       const response = error?.response
-      console.log(error)
       if(response){
         const {status, data} = response
         const message = data?.message
@@ -97,7 +117,6 @@ const App = () =>{
           takeMessage = message || responseMessages.error[500]
         }
       }
-      console.log(takeMessage);
     }
   }
   const dataDispatchEvent = (action, payload) => {
@@ -123,7 +142,7 @@ const App = () =>{
     }
   }
   return (
-    <AppContext.Provider value={ {dataDispatchEvent, adminSignIn, adminNews, adminNewsCount} }>
+    <AppContext.Provider value={ {dataDispatchEvent, adminSignIn, adminNews, adminNewsCount, userNews} }>
       <div className="main-component-wrapper color-main-bg relative">
         <div className="main-component-body">
           <div className="min-h-screen w-full">
@@ -137,8 +156,8 @@ const App = () =>{
           <div className=" component-responsive-size">
             <Routes>
               <Route  path="/" element={<Index/>}/>
-              <Route  path="/news/:type" element={<NewsPage/>}/>
-              <Route  path="/news/:type?/:id?" element={<NewsReadPage/>}/>
+              <Route  path="/news/:category" element={<NewsPage/>}/>
+              <Route  path="/news/:category?/:id?" element={<NewsReadPage/>}/>
               <Route  path="/about-us" element={<AboutUs/>}/>
               <Route  path="/contact-us" element={''}/>
               <Route  path="/admin-panel/:pageName?" element={<AdminPanelPage/>}/>
