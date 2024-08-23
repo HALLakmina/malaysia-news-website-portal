@@ -24,11 +24,11 @@ const NavigationBar = () => {
                         <p  className='nav-item-hover px-2 rounded-full body-font-5 font-bold flex items-center md:justify-center my-4 md:my-0'>NEWS <img src='/assets/icons/dropdown-icon.svg' alt='' className='ms-2 h-2'/></p>
                             <div className='absolute top-6 left-0 right-0 h-3'></div>
                             <ul className= {`p-2 mx-2 mt-3 w-64 color-bg-white rounded md:absolute z-20 ${isNewsHover ? "block":'hidden'}`}>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sri_lankan" className='body-font-5 font-bold'>SRI LANKAN NEWS</Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/malaysian" className='body-font-5 font-bold'>MALAYSIAN NEWS</Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/gossip" className='body-font-5 font-bold'>GOSSIP</Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sport" className='body-font-5 font-bold'>SPORT News</Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/world" className='body-font-5 font-bold'>WORLD NEWS</Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sri_lankan"><p className='body-font-5 font-bold w-full'>SRI LANKAN NEWS</p></Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/malaysian"><p className='body-font-5 font-bold w-full'>MALAYSIAN NEWS</p></Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/gossip"><p className='body-font-5 font-bold w-full'>GOSSIP</p></Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sport"><p className='body-font-5 font-bold w-full'>SPORT NEWS</p></Link></li>
+                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/world"><p className='body-font-5 font-bold w-full'>WORLD NEWS</p></Link></li>
                             </ul>
                         </li>
                     <li className="nav-item-hover px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/about-us" className='body-font-5 font-bold'>ABOUT US</Link></li>

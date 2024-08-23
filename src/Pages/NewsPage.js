@@ -12,14 +12,16 @@ const NewsPage = () => {
             {userNews?.filter((data, index)=>{
                 return data.category === category 
             })?.slice(0,1)?.map((data, index)=>(
-                <FullNewsCard news={data} category={category}/>
+                <div key={index}>
+                    <FullNewsCard news={data} category={category}/>
+                </div>
             ))}
             <div className="flex flex-wrap ">         
                 {userNews?.filter((data, index)=>{
                     return data.category === category 
                 })?.slice(1).map((data, index)=>(
-                    <div className=" w-100 lg:w-1/3 md:w-2/4">
-                        <NewsCard category={category} data={data} key={index}/>
+                    <div className=" w-100 lg:w-1/3 md:w-2/4" key={index}>
+                        <NewsCard category={category} data={data}/>
                     </div>
                 ))}
             </div>
