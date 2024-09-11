@@ -10,6 +10,9 @@ const NewsBar = ({news, category}) => {
         }
         return categoryName
     }
+    const truncate= (description)=>{
+        return  description.length > 170 ? description.substring(0, 150) + "..." : description
+    }
   return (
     <>
         {news?.filter((data, index)=>{
@@ -23,11 +26,11 @@ const NewsBar = ({news, category}) => {
                             {data.heading}
                         </p>
                         <p className="body-font-4">
-                            {data.description}
+                            {truncate(data.description)}
                         </p>
                     </div>
                     <div className="max-h-96 h-full md:w-1/2 w-full flex flex-col items-center justify-center">
-                        <img src={process.env.REACT_APP_API_URL+"/"+data.image.storageName} alt="" className='w-full object-contain overflow-hidden'/>
+                        <img src={"/"+data.image.storageName} alt="" className='w-full object-contain overflow-hidden'/>
                     </div>
                 </div>
             </div>

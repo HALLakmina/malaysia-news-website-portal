@@ -16,7 +16,7 @@ const FullNewsCard = ({news={}, category}) => {
                   <p className='body-font-5'>{news && news?.createdAt?.split("T",1)}</p>
                   <p className='body-font-5'>{news.createdAt && timeExtra(news.createdAt)}</p>
               </div>
-              <img src={`${process.env.REACT_APP_API_URL}/${news?.image?.storageName}`} alt="" className='w-full h-auto'/>
+              <img src={`/${news?.image?.storageName}`} alt="" className='w-full h-auto'/>
               <p className='body-font-4'>
                   {news.description}
               </p>
