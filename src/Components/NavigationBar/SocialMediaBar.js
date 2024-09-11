@@ -9,7 +9,7 @@ const SocialMediaBar = () => {
         dataDispatchEvent('GET_LANGUAGE',language)
     }
   return (
-    <div className="w-full flex flex-row p-2 justify-between">
+    <div className="w-full flex flex-row p-2 justify-between color-main-bg">
         <div className="flex flex-row w-2/3">
             <Link to={'https://www.facebook.com/'} target="_blank" className="flex flex-row items-center justify-center mx-2">
                 <img src="/assets/icons/facebook-icon.png" alt="" className='h-6 rounded me-2'/>

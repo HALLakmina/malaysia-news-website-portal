@@ -9,7 +9,7 @@ const NavigationBar = () => {
         setIsSideMenuTrigger(state)
     }
   return (
-    <header className="w-full px-3">
+    <header className="w-full px-3 pt-6 color-main-bg">
         <div className="flex flex-row items-center basis-10/12 w-full">
             <nav className="flex flex-col sm:flex-row items-center justify-center my-3 px-1 w-full">
                 

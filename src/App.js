@@ -163,15 +163,15 @@ const App = () =>{
           <div className="min-h-screen w-full">
           {(mainPageName[1] !== 'admin-login')?  
             mainPageName[1] !== 'admin-panel' ?
-              <>
+              <div className="sm:fixed z-10 top-0 w-full" style={{maxWidth:'1200px'}}>
                 <SocialMediaBar/>
                 <NavigationBar/>
-              </>
+              </div>
             : 
               <LeftSideNavigationBar/>
           :
             ''}
-          <div className=" component-responsive-size">
+          <div className=" component-responsive-size sm:pt-32">
             <Routes>
               <Route  path="/" element={<Index/>}/>
               <Route  path="/news/:category" element={<NewsPage/>}/>
