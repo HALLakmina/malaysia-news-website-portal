@@ -13,6 +13,7 @@ import { AppContext } from "./ContextAPI/AppContext";
 import Cookies from "universal-cookie";
 import { getNewsCount, getNewsForAdmin, getNewsForUser } from "./APIS/NewsApi";
 import SocialMediaBar from "./Components/NavigationBar/SocialMediaBar";
+import ContactUs from "./Pages/ContactUs";
 
 
 const responseMessages = require('./Util/responseMessages')
@@ -177,7 +178,7 @@ const App = () =>{
               <Route  path="/news/:category" element={<NewsPage/>}/>
               <Route  path="/news/:category?/:id?" element={<NewsReadPage/>}/>
               <Route  path="/about-us" element={<AboutUs/>}/>
-              <Route  path="/contact-us" element={''}/>
+              <Route  path="/contact-us" element={<ContactUs/>}/>
               <Route  path="/admin-panel/:pageName?" element={<AdminPanelPage/>}/>
               <Route  path="/admin-login" element={<AdminSignInPage/>}/>
             </Routes>
