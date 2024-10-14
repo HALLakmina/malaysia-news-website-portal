@@ -11,11 +11,11 @@ const SocialMediaBar = () => {
   return (
     <div className="w-full flex flex-row p-2 justify-between color-main-bg">
         <div className="flex flex-row w-2/3">
-            <Link to={'https://www.facebook.com/'} target="_blank" className="flex flex-row items-center justify-center mx-2">
+            <Link to={'https://www.facebook.com/profile.php?id=61565461942339&mibextid=ZbWKwL'} target="_blank" className="flex flex-row items-center justify-center mx-2">
                 <img src="/assets/icons/facebook-icon.png" alt="" className='h-6 rounded me-2'/>
                 <p className="font-bold body-font-6 hidden sm:block">Facebook</p>
             </Link>
-            <Link to={'https://www.youtube.com/'} target="_blank" className="flex flex-row items-center justify-center mx-2">
+            <Link to={'https://youtube.com/channel/UC7eDLooycJbb4gmeT5tt3kw?si=HkbQ4lXxyeWU-6pe'} target="_blank" className="flex flex-row items-center justify-center mx-2">
                 <img src="/assets/icons/youtube-icon.png" alt="" className='h-6 rounded me-2'/>
                 <p className="font-bold body-font-6 hidden sm:block">YouTube</p>
             </Link>
