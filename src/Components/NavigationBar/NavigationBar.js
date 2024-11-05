@@ -14,8 +14,7 @@ const NavigationBar = () => {
             <nav className="flex flex-col sm:flex-row items-center justify-center my-3 px-1 w-full">
                 
                 <div className="flex flex-row basis-2/12 md:basis-1/12 ">
-                    <p>LOGO_</p>
-                    <h3>HEADING</h3>
+                    <img src="/assets/icons/malay-sri-logo.png" alt="Malay Sri website logo" className="max-w-28"/>
                 </div>
                 <ul className={` ${isSideMenuTrigger ? '':'hidden'}  md:flex justify-center basis-8/12 flex-col md:flex-row absolute z-10 md:relative right-0 top-0 bottom-0 w-60 bg-white md:bg-transparent`}>
                     <p className="font-bold m-3  text-base rounded-full border-2 border-red-500 text-red-500 w-8 h-8 flex items-center justify-center md:hidden cursor-pointer"onClick={()=>handleSideMenu(false)}>X</p>

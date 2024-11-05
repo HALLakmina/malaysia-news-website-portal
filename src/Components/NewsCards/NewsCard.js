@@ -9,7 +9,7 @@ const NewsCard = ({ category, data}) => {
       <div className="rounded-lg p-3 color-bg-white flex flex-col relative my-2 mx-2 ">
           <p className="absolute top-0 right-0 body-font-5">Latest</p>
           <div className='w-100 h-40 sm:h-52'>
-              <img src={`/${data.image.storageName}`} alt="" className="size-full rounded-lg object-contain overflow-hidden"/>
+          <Link to={`/news/${category}/${data._id}`}> <img src={`/${data.image.storageName}`} alt="" className="size-full rounded-lg object-contain overflow-hidden"/></Link>
           </div>
           <p className="heading-font-5">{data.topic}</p>
           <p className="body-font-5 color-text-on-ash-gray">July 16, 2024</p>
