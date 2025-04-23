@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# News Website
+    A Full Functional NEWS website to the for foreigners to watch the news in their own language for update situation they living country and home country. And provide the serves for users to publish there advertisement contacting admin.
+## Table of Contents
+- [Installation & Run](#installation-&-run)
+- [Usage](#usage)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Contact](#contact)
+## Installation & Run
+1. Setup and select the place to clone the project:
+    - Download and install [Node.js](https://nodejs.org/en/download)
+    - Download and install [git-bash](https://git-scm.com/downloads)
+    - Go specific folder or local and open git-bash or CMD inside that location.
+2. Clone the repository:
+    type flowing command in CMD or git-bash
+   ```bash
+   git clone https://github.com/HALLakmina/malaysia-news-website-portal.git
+   cd malaysia-news-website-portal
+   git fetch
+   git pull
+   git checkout dev
+   npm install
+   npm run start
+   ```
+3. Clone back-end repository:
+    [Click Hear](https://github.com/HALLakmina/malaysia-news-website-core) to setup and run back-end server
+## Usage
+- successful run and start front-end and back-end open browser and reach page `http://localhost:3000`
+- user can navigation using two navigation bar place in top in page 
+    - social media navigation bar provide select language and social media links
+    - page navigation bar provide navigation between pages in news website 
+        - home
+        - news
+            - Sri Lanka News
+            - malaysia News
+            - Sport News
+        - Contact us
+        - About us
+- New page wen you show the lats news first and after show extra news show with short description. User click news then can look full content and show extra news also now need to backward continues in that page.
+- Admin can login using  http://localhost:3000/admin-login
+- Check authentication for login page
+## Features
+- use can search the news.
+- Find the news on Sinhala or English language.
+- Categorize news.
+- First show lates news.
+- admin can manage news in news page.
+## Technologies Used
+HTML, CSS, JS, React.js,Tailwind CSS, and Node.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Contact
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Developed by Lahiru Lakmina
+- Email: lahirulakmina1999@gmail.com
+- GitHub: @HALLakmina
