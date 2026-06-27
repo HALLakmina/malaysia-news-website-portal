@@ -8,6 +8,14 @@ const CategoryBlock = ({ category, articles = [] }) => {
   const featured = articles[0]
   const cards = articles.slice(1, 5)
 
+  const limitDescription =(description)=>{
+    const maxLength = 150;
+    if (description.length > maxLength) {
+        return description.slice(0, maxLength) + '...';
+    }
+    return description;
+  }
+
   return (
     <section className="px-4 sm:px-8 lg:px-14 py-7 lg:py-10 border-b border-meridian-border">
       <div className="flex items-end justify-between gap-4 mb-4">
@@ -32,7 +40,7 @@ const CategoryBlock = ({ category, articles = [] }) => {
         >
           {featured.image?.storageName ? (
             <img
-              src={`/${featured.image.storageName}`}
+              src={`${process.env.REACT_APP_API_URL}/${featured.image.storageName}`}
               alt=""
               className="w-full aspect-video object-cover rounded mb-3"
             />
@@ -48,7 +56,7 @@ const CategoryBlock = ({ category, articles = [] }) => {
           <h3 className="font-display font-bold tracking-tight leading-tight text-meridian-ink text-[20px] lg:text-[23px] m-0 group-hover:text-meridian-navy">
             {featured.topic}
           </h3>
-          <p className="text-meridian-body text-sm leading-relaxed mt-2">{featured.description}</p>
+          <p className="text-meridian-body text-sm leading-relaxed mt-2">{limitDescription(featured.description)}</p>
           <div className="text-meridian-faint text-xs mt-2.5 font-medium">
             {formatNewsDate(featured.createdAt)}
           </div>
@@ -63,7 +71,7 @@ const CategoryBlock = ({ category, articles = [] }) => {
             >
               {card.image?.storageName ? (
                 <img
-                  src={`/${card.image.storageName}`}
+                  src={`${process.env.REACT_APP_API_URL}/${card.image.storageName}`}
                   alt=""
                   className="flex-none w-28 h-20 sm:w-full sm:h-auto sm:aspect-video object-cover rounded block"
                 />

@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { CATEGORY_LIST } from '../../Util/categories'
+import { AppContext } from '../../ContextAPI/AppContext'
+import SearchOverlay from '../Search/SearchOverlay'
+import { sortByRecency } from '../../Util/formatDate'
 
 const NAV_LINKS = [
   { key: 'home', name: 'Home', to: '/' },
@@ -18,6 +21,9 @@ const SearchIcon = ({ size = 15 }) => (
 
 const NavigationBar = () => {
   const { pathname } = useLocation()
+  const { userNews = [] } = useContext(AppContext)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const sortedNews = useMemo(() => sortByRecency(userNews), [userNews])
   const isActive = (link) => (link.to === '/' ? pathname === '/' : pathname.startsWith(link.to))
 
   return (
@@ -43,6 +49,7 @@ const NavigationBar = () => {
         </div>
         <button
           aria-label="Search"
+          onClick={() => setSearchOpen(true)}
           className="flex-none flex items-center gap-2 bg-meridian-chip border border-meridian-border rounded-full px-3.5 py-2 text-meridian-muted text-[13px] hover:border-meridian-faint hover:text-meridian-ink"
           type="button"
         >
@@ -69,12 +76,15 @@ const NavigationBar = () => {
         </div>
         <button
           aria-label="Search"
+          onClick={() => setSearchOpen(true)}
           className="flex-none grid place-items-center w-11 h-11 border-l border-meridian-border text-meridian-ink"
           type="button"
         >
           <SearchIcon size={18} />
         </button>
       </div>
+
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} articles={sortedNews} />
     </header>
   )
 }

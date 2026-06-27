@@ -10,6 +10,15 @@ const LeadSection = ({ articles = [] }) => {
   const rail = articles.slice(1, 5)
   const leadMeta = getCategoryMeta(lead.category)
 
+  const limitDescription =(description)=>{
+    const maxLength = 300;
+    if (description.length > maxLength) {
+        return description.slice(0, maxLength) + '...';
+    }
+    return description;
+  }
+
+
   return (
     <div className="px-4 sm:px-8 lg:px-14 pt-6 sm:pt-9">
       <div className="flex flex-col lg:flex-row gap-7 lg:gap-11 items-start pb-7 lg:pb-9 border-b border-meridian-border">
@@ -18,7 +27,7 @@ const LeadSection = ({ articles = [] }) => {
             <div className="relative">
               {lead.image?.storageName ? (
                 <img
-                  src={`/${lead.image.storageName}`}
+                  src={`${process.env.REACT_APP_API_URL}/${lead.image.storageName}`}
                   alt=""
                   className="w-full aspect-video object-cover rounded"
                 />
@@ -39,7 +48,7 @@ const LeadSection = ({ articles = [] }) => {
               {lead.topic}
             </h2>
             <p className="text-meridian-body text-[15px] sm:text-[17px] leading-relaxed mt-3.5">
-              {lead.description}
+              {limitDescription(lead.description)}
             </p>
             <div className="text-meridian-faint text-[13px] font-medium mt-3.5">
               {formatNewsDate(lead.createdAt)}
