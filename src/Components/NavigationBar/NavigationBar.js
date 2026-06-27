@@ -8,8 +8,6 @@ import { sortByRecency } from '../../Util/formatDate'
 const NAV_LINKS = [
   { key: 'home', name: 'Home', to: '/' },
   ...CATEGORY_LIST.map((c) => ({ key: c.key, name: c.name, to: `/news/${c.key}` })),
-  { key: 'about-us', name: 'About Us', to: '/about-us' },
-  { key: 'contact-us', name: 'Contact Us', to: '/contact-us' },
 ]
 
 const SearchIcon = ({ size = 15 }) => (
