@@ -14,6 +14,7 @@ import Cookies from "universal-cookie";
 import { getNewsCount, getNewsForAdmin, getNewsForUser } from "./APIS/NewsApi";
 import SocialMediaBar from "./Components/NavigationBar/SocialMediaBar";
 import ContactUs from "./Pages/ContactUs";
+import Footer from "./Components/Footer/Footer";
 
 
 const responseMessages = require('./Util/responseMessages')
@@ -29,11 +30,11 @@ const App = () =>{
 
   useEffect(()=>{
     dataDispatchEvent('GET_SIGN_IN_ADMIN_FROM_COOKIES')
-    dataDispatchEvent('GET_NEWS_FOR_USER')
+    dataDispatchEvent('GET_NEWS_FOR_USER', {limit:100})
   },[])
 
   useEffect(()=>{
-    dataDispatchEvent('GET_NEWS_FOR_USER')
+    dataDispatchEvent('GET_NEWS_FOR_USER', {limit:100})
   },[language])
 
   const setSignInUserToCookies = async (jwtToken)=>{
@@ -182,6 +183,7 @@ const App = () =>{
               <Route  path="/admin-panel/:pageName?" element={<AdminPanelPage/>}/>
               <Route  path="/admin-login" element={<AdminSignInPage/>}/>
             </Routes>
+            {(mainPageName[1] !== 'admin-login' && mainPageName[1] !== 'admin-panel') && <Footer/>}
           </div>
           </div>
         </div>

@@ -1,47 +1,80 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { CATEGORY_LIST } from '../../Util/categories'
+
+const NAV_LINKS = [
+  { key: 'home', name: 'Home', to: '/' },
+  ...CATEGORY_LIST.map((c) => ({ key: c.key, name: c.name, to: `/news/${c.key}` })),
+  { key: 'about-us', name: 'About Us', to: '/about-us' },
+  { key: 'contact-us', name: 'Contact Us', to: '/contact-us' },
+]
+
+const SearchIcon = ({ size = 15 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </svg>
+)
 
 const NavigationBar = () => {
-    const [isNewsHover, setIsNewsHover] = useState(false)
-    const [isSideMenuTrigger, setIsSideMenuTrigger] = useState(false)
+  const { pathname } = useLocation()
+  const isActive = (link) => (link.to === '/' ? pathname === '/' : pathname.startsWith(link.to))
 
-    const handleSideMenu = (state) =>{
-        setIsSideMenuTrigger(state)
-    }
   return (
-    <header className="w-full px-3 pt-6 color-main-bg">
-        <div className="flex flex-row items-center basis-10/12 w-full">
-            <nav className="flex flex-col sm:flex-row items-center justify-center my-3 px-1 w-full">
-                
-                <div className="flex flex-row basis-2/12 md:basis-1/12 ">
-                    <img src="/assets/icons/malay-sri-logo.png" alt="Malay Sri website logo" className="max-w-28"/>
-                </div>
-                <ul className={` ${isSideMenuTrigger ? '':'hidden'}  md:flex justify-center basis-8/12 flex-col md:flex-row absolute z-10 md:relative right-0 top-0 bottom-0 w-60 bg-white md:bg-transparent`}>
-                    <p className="font-bold m-3  text-base rounded-full border-2 border-red-500 text-red-500 w-8 h-8 flex items-center justify-center md:hidden cursor-pointer"onClick={()=>handleSideMenu(false)}>X</p>
-                    <li className="mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/" className='nav-item-hover px-2 rounded-full body-font-5 font-bold'>HOME</Link></li>
-                    <li className=" mx-2 color-bg-white rounded-full relative " onMouseEnter={()=>setIsNewsHover(true)} onMouseLeave={()=>setIsNewsHover(false)}>
-                        <p  className='nav-item-hover px-2 rounded-full body-font-5 font-bold flex items-center md:justify-center my-4 md:my-0'>NEWS <img src='/assets/icons/dropdown-icon.svg' alt='' className='ms-2 h-2'/></p>
-                            <div className='absolute top-6 left-0 right-0 h-3'></div>
-                            <ul className= {`p-2 mx-2 mt-3 w-64 color-bg-white rounded md:absolute z-20 ${isNewsHover ? "block":'hidden'}`}>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sri_lankan"><p className='body-font-5 font-bold w-full'>SRI LANKAN NEWS</p></Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/malaysian"><p className='body-font-5 font-bold w-full'>MALAYSIAN NEWS</p></Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/gossip"><p className='body-font-5 font-bold w-full'>GOSSIP</p></Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/sport"><p className='body-font-5 font-bold w-full'>SPORT NEWS</p></Link></li>
-                                <li className="my-2 px-2 nav-item-hover"><Link to="/news/world"><p className='body-font-5 font-bold w-full'>WORLD NEWS</p></Link></li>
-                            </ul>
-                        </li>
-                    <li className="nav-item-hover px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/about-us" className='body-font-5 font-bold'>ABOUT US</Link></li>
-                    <li className="nav-item-hover px-2 mx-2 color-bg-white rounded-full flex items-center md:justify-center my-4 md:my-0"><Link to="/contact-us" className='body-font-5 font-bold'>CONTACT US</Link></li>
-                </ul>
-                <form className="flex flex-row basis-9/12 md:basis-4/12 justify-end w-full px-5 md:px-0">
-                    <input type="text" placeholder="SEARCH" className='px-2 py-1 body-font-5 rounded-l-lg w-full'/>
-                    <button id='search' aria-label="Search Button" type="button"><img src="/assets/icons/search-icon.svg" alt="" className='w-8 bg-white h-full p-1 rounded-r-lg cursor-pointer'/></button>
-                </form>
-            </nav>
-            <div className="basis-1/12 flex justify-end md:hidden mx-2">
-                <img src='/assets/icons/menu-icon.svg' alt='' className='h-5' onClick={()=>handleSideMenu(true)}/>
-            </div>
+    <header className="bg-white border-b border-meridian-border relative z-20">
+      <div className="hidden sm:flex items-center justify-between gap-4 px-4 sm:px-8 lg:px-14">
+        <div className="flex items-center gap-1 flex-1 min-w-0 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+          <img src="/assets/icons/malay-sri-logo.png" alt="Malay Sri" className="h-8 mr-4 flex-none" />
+          <nav className="flex items-center gap-0.5">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.key}
+                to={link.to}
+                className={`inline-block px-3.5 py-4 font-display font-bold text-[14.5px] tracking-tight border-b-[3px] -mb-px whitespace-nowrap ${
+                  isActive(link)
+                    ? 'text-meridian-navy border-meridian-navy'
+                    : 'text-meridian-body border-transparent hover:text-meridian-navy'
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
         </div>
+        <button
+          aria-label="Search"
+          className="flex-none flex items-center gap-2 bg-meridian-chip border border-meridian-border rounded-full px-3.5 py-2 text-meridian-muted text-[13px] hover:border-meridian-faint hover:text-meridian-ink"
+          type="button"
+        >
+          <SearchIcon />
+          <span>Search</span>
+        </button>
+      </div>
+
+      <div className="flex sm:hidden items-center gap-2 pl-3">
+        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 pr-1 flex-1" style={{ scrollbarWidth: 'none' }}>
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.key}
+              to={link.to}
+              className={`flex-none whitespace-nowrap rounded-full px-3.5 py-2 font-display font-bold text-[13px] border ${
+                isActive(link)
+                  ? 'bg-meridian-navy text-white border-meridian-navy'
+                  : 'bg-meridian-chip text-meridian-body border-meridian-border'
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+        <button
+          aria-label="Search"
+          className="flex-none grid place-items-center w-11 h-11 border-l border-meridian-border text-meridian-ink"
+          type="button"
+        >
+          <SearchIcon size={18} />
+        </button>
+      </div>
     </header>
   )
 }
