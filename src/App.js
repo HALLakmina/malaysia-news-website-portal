@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NavigationBar from './Components/NavigationBar/NavigationBar'
-import LeftSideNavigationBar from "./Components/NavigationBar/LeftSideNavigationBar";
 import Index from "./Pages/Index"
 import NewsPage from "./Pages/NewsPage";
 import NewsReadPage from "./Pages/NewsReadPage";
@@ -24,7 +23,7 @@ const App = () =>{
   const [adminNews, setAdminNews] = useState([])
   const [userNews, setUserNews] = useState([])
   const [adminNewsCount, setAdminNewsCount] = useState(0)
-  const [language, setLanguage] = useState('sinhala')
+  const [language, setLanguage] = useState('english')
   const { pathname } = useLocation()
   const mainPageName = pathname.split('/',2)
 
@@ -163,17 +162,13 @@ const App = () =>{
       <div className="main-component-wrapper color-main-bg relative">
         <div className="main-component-body">
           <div className="min-h-screen w-full">
-          {(mainPageName[1] !== 'admin-login')?  
-            mainPageName[1] !== 'admin-panel' ?
-              <div className="sm:fixed z-10 top-0 w-full" style={{maxWidth:'1200px'}}>
-                <SocialMediaBar/>
-                <NavigationBar/>
-              </div>
-            : 
-              <LeftSideNavigationBar/>
-          :
-            ''}
-          <div className=" component-responsive-size sm:pt-32">
+          {(mainPageName[1] !== 'admin-login' && mainPageName[1] !== 'admin-panel') &&
+            <div className="sm:fixed z-10 top-0 w-full" style={{maxWidth:'1200px'}}>
+              <SocialMediaBar/>
+              <NavigationBar/>
+            </div>
+          }
+          <div className={mainPageName[1] === 'admin-panel' ? '' : 'component-responsive-size sm:pt-32'}>
             <Routes>
               <Route  path="/" element={<Index/>}/>
               <Route  path="/news/:category" element={<NewsPage/>}/>

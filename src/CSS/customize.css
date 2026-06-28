@@ -3,6 +3,31 @@
     background-color: var(--color-ash-gray);
 }
 
+/* Admin panel (dark CMS shell) */
+.mn-tr:hover{
+    background: rgba(255,255,255,.025);
+}
+.mn-cmd-row:hover{
+    background: rgba(34,211,238,.08);
+}
+.mn-ipt{
+    width: 100%;
+    background: #0C0F16;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 9px;
+    padding: 10px 12px;
+    color: #EAEEF6;
+    font-size: 13px;
+    outline: none;
+}
+.mn-ipt:focus{
+    border-color: rgba(34,211,238,.55);
+    box-shadow: 0 0 0 3px rgba(34,211,238,.12);
+}
+.mn-ipt::placeholder{
+    color: #5C6577;
+}
+
 /* Admin Panel Table */
 @media (max-width: 640px){
     .table-data-header{

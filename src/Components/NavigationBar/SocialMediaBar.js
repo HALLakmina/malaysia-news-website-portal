@@ -65,8 +65,8 @@ const SocialMediaBar = () => {
             onChange={languageHandler}
             className="bg-transparent border-0 text-white text-[12.5px] font-semibold outline-none cursor-pointer"
           >
-            <option className="text-black" value="sinhala">සිං</option>
             <option className="text-black" value="english">En</option>
+            <option className="text-black" value="sinhala">සිං</option>
           </select>
         </div>
       </div>
